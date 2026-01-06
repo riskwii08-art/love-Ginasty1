@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Love You Ginasty ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(180deg, #ff9a9e, #fad0c4);
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.container {
+    padding: 20px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+h1 {
+    font-size: 10vw;
+    animation: heartbeat 1s infinite;
+}
+
+h2 {
+    font-size: 8vw;
+    margin-top: -10px;
+}
+
+.tap {
+    margin-top: 20px;
+    font-size: 5vw;
+    opacity: 0.9;
+}
+
+.heart {
+    position: fixed;
+    top: -10px;
+    font-size: 5vw;
+    animation: fall linear infinite;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.modal-content {
+    background: white;
+    color: hotpink;
+    padding: 20px;
+    border-radius: 20px;
+    width: 85%;
+    animation: fadeIn 1s;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px 25px;
+    font-size: 4.5vw;
+    border: none;
+    border-radius: 30px;
+    background: hotpink;
+    color: white;
+}
+
+@keyframes fall {
+    to { transform: translateY(110vh); }
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+</style>
+</head>
+
+<body ontouchstart="startLove()">
+
+<audio id="music" loop>
+    <source src="aboutyou.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+    <h1>❤️ I LOVE YOU ❤️</h1>
+    <h2>Ginasty</h2>
+    <button onclick="startLove()">Play Music 💖</button>
+</div>
+
+<div class="modal" id="loveBox">
+    <div class="modal-content">
+        <h2>Untuk Ginasty 🤍</h2>
+        <p>
+            Kamu adalah rumah,  
+            tempat aku pulang.  
+            Aku sayang kamu hari ini,  
+            besok, dan seterusnya 💖
+        </p>
+        <button onclick="closeLove()">Tutup</button>
+    </div>
+</div>
+
+<script>
+function startLove() {
+    const music = document.getElementById("music");
+    music.play();
+    document.getElementById("loveBox").style.display = "flex";
+}
+
+function closeLove() {
+    document.getElementById("loveBox").style.display = "none";
+}
+
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 8000);
+}
+setInterval(createHeart, 350);
+</script>
+
+</body>
+</html>
